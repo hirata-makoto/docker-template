@@ -1,0 +1,33 @@
+version: '3'
+services:
+  app:
+    container_name: app
+    build: ./app
+    environment:
+      NODE_ENV: development
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./app:/usr/src/sample-express
+  web:
+    container_name: web
+    image: nginx
+    volumes:
+      - ./web/logs/:/var/log/nginx/
+      - ./web/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - "8080:80"
+      - "443:443"
+  db:
+    container_name: db
+    image: mysql:5.7.22
+    ports:
+      - "3306:3306"
+    hostname: dbserver
+    volumes:
+      - ./db/mysql_data:/var/lib/mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_USER: test
+        MYSQL_PASSWORD: test
+        MYSQL_DATABASE: test
