@@ -21,7 +21,7 @@ export default class Root extends Component {
                         component={RepoPage} />
                     <Route path="/:login"
                         component={UserPage} />
-                    <DevTools />
+                    {/* <DevTools /> */}
                 </div>
             </Provider>
         )

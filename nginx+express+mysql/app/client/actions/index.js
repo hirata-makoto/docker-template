@@ -114,13 +114,7 @@ export const loadStargazers = (fullName, nextPage) => (dispatch, getState) => {
 
 export const RESET_ERROR_MESSAGE = 'RESET_ERROR_MESSAGE'
 
-const aaa = () => {
-    return {
-        type: RESET_ERROR_MESSAGE
-    }
-}
-
 // Resets the currently visible error message.
-export const resetErrorMessage = (dispatch) => {
-    dispatch(aaa())
-}
+export const resetErrorMessage = () => ({
+    type: RESET_ERROR_MESSAGE
+})

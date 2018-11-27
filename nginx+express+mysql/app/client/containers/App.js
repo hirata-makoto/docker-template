@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Explore from '../components/Explore'
 import * as Actions from '../actions'
+import {resetErrorMessage} from '../actions'
 import { bindActionCreators } from 'redux'
 
 class App extends Component {
@@ -58,18 +59,21 @@ class App extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
     errorMessage: state.errorMessage,
-    inputValue: ownProps.location.pathname.substring(1)
+    inputValue: ownProps.location.pathname.substring(1),
 })
 
 const mapDispatchToProps = (dispatch) => (
     {
-        ...bindActionCreators(Actions, dispatch),
+        //...bindActionCreators(Actions, dispatch)
     }
 )
 
 export default withRouter(
     connect(
         mapStateToProps,
-        mapDispatchToProps
+        //mapDispatchToProps
+        {
+            resetErrorMessage
+        }
     )(App)
 )
