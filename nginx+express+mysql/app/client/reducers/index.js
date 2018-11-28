@@ -1,14 +1,20 @@
 import * as ActionTypes from '../actions'
-import merge from 'lodash/merge'
 import paginate from './paginate'
 import { combineReducers } from 'redux'
 
-// Updates an entity cache in response to any action with response.entities.
-const entities = (state = { users: {}, repos: {} }, action) => {
-    if (action.response && action.response.entities) {
-        return merge({}, state, action.response.entities)
-    }
+// 
+const user = (state = {}, action) => {
+    console.log('actionがあったよ', state)
+    return state
+}
 
+// 
+const chats = (state = [], action) => {
+    return state
+}
+
+// 
+const app = (state = {}, action) => {
     return state
 }
 
@@ -46,9 +52,9 @@ const pagination = combineReducers({
 })
 
 const rootReducer = combineReducers({
-    entities,
-    pagination,
-    errorMessage,
+    app,
+    user,
+    chats
 })
 
 export default rootReducer

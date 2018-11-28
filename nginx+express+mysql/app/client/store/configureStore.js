@@ -1,11 +1,14 @@
-import prod from './configureStore.prod'
-import dev from './configureStore.dev'
+import * as prod from './configureStore.prod'
+import * as dev from './configureStore.dev'
 
 let configureStore
+let preloadedState
 if (process.env.NODE_ENV === 'production') {
-    configureStore = prod
+    configureStore = prod.configureStore
+    preloadedState = prod.preloadedState
 } else {
-    configureStore = dev
+    configureStore = dev.configureStore
+    preloadedState = dev.preloadedState
 }
 
-export default configureStore
+export {configureStore, preloadedState}

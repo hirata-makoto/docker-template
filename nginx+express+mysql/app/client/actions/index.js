@@ -118,3 +118,12 @@ export const RESET_ERROR_MESSAGE = 'RESET_ERROR_MESSAGE'
 export const resetErrorMessage = () => ({
     type: RESET_ERROR_MESSAGE
 })
+
+export const SEND_MESSAGE = 'SEND_MESSAGE'
+export const sendMessage = (user, text) => (dispatch, getState) => {
+    return dispatch({
+        type: SEND_MESSAGE,
+        user,
+        text
+    })
+}

@@ -1,79 +1,50 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import Explore from '../components/Explore'
-import * as Actions from '../actions'
-import {resetErrorMessage} from '../actions'
-import { bindActionCreators } from 'redux'
+import styled from 'styled-components'
+
+import ChatHeader from './ChatHeader'
+import ChatBody from './ChatBody'
+import ChatFooter from './ChatFooter'
 
 class App extends Component {
-    static propTypes = {
-        // Injected by React Redux
-        errorMessage: PropTypes.string,
-        resetErrorMessage: PropTypes.func.isRequired,
-        inputValue: PropTypes.string.isRequired,
-        // Injected by React Router
-        children: PropTypes.node
-    }
-
-    handleDismissClick = e => {
-        this.props.resetErrorMessage()
-        e.preventDefault()
-    }
-
-    handleChange = nextValue => {
-        this.props.history.push(`/${nextValue}`)
-    }
-
-    renderErrorMessage() {
-        const { errorMessage } = this.props
-        if (!errorMessage) {
-            return null
-        }
-
-        return (
-            <p style={{ backgroundColor: '#e99', padding: 10 }}>
-                <b>{errorMessage}</b>
-                {' '}
-                <button onClick={this.handleDismissClick}>
-                    Dismiss
-                </button>
-            </p>
-        )
-    }
+    static propTypes = {}
 
     render() {
-        const { children, inputValue } = this.props
         return (
-            <div>
-                <Explore value={inputValue}
-                    onChange={this.handleChange} />
-                <hr />
-                {this.renderErrorMessage()}
-                {children}
-            </div>
+            <Div>
+                <ChatApp >
+                    <ChatHeader />
+                    <ChatBody />
+                    <ChatFooter />
+                </ChatApp>
+            </Div>
         )
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    errorMessage: state.errorMessage,
-    inputValue: ownProps.location.pathname.substring(1),
-})
+export default withRouter(App)
 
-const mapDispatchToProps = (dispatch) => (
-    {
-        //...bindActionCreators(Actions, dispatch)
-    }
-)
 
-export default withRouter(
-    connect(
-        mapStateToProps,
-        //mapDispatchToProps
-        {
-            resetErrorMessage
-        }
-    )(App)
-)
+/**
+ * component style
+ */
+const ChatApp = styled.div`
+    width : 600px;
+    height: 400px;
+    background-color: #ffffff;
+    border: 1px solid #c6c6c6;
+    border-radius: 4px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 50px;
+    justify-self: center;
+    align-self: center;
+`
+
+const Div = styled.div`
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 100vh;
+`

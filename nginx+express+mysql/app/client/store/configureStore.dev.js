@@ -5,7 +5,7 @@ import api from '../middleware/api'
 import rootReducer from '../reducers'
 import { devToolsEnhancer } from 'redux-devtools-extension'
 
-const configureStore = preloadedState => {
+export const configureStore = preloadedState => {
     const store = createStore(
         rootReducer,
         preloadedState,
@@ -25,4 +25,17 @@ const configureStore = preloadedState => {
     return store
 }
 
-export default configureStore
+export const preloadedState = {
+    app: {
+        title: 'チャットテスト'
+    },
+    user: {
+        name: '168.190.0.100'
+    },
+    chats: [
+        {
+            user: '168.190.0.100',
+            date: '2018/11/28',
+            dialogue: 'aaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        }]
+}
