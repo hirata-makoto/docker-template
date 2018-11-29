@@ -10,7 +10,7 @@ module.exports = {
     output: {
         filename: '../public/js/bundle.js'
     },
-    // target: 'node',
+    //target: 'node',
     module: {
         rules: [{
             test: /.js$/,
@@ -20,7 +20,7 @@ module.exports = {
                     ['@babel/preset-env',{
                         targets: {
                             'browsers': [
-                                '>0.25%',
+                                '>1.00%',
                                 'not ie 11',
                                 'not op_mini all'
                             ]

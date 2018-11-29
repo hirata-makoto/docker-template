@@ -32,6 +32,7 @@ class ChatFooter extends Component {
             inputText: ''
         })
 
+        this.props.serviceGetData()
         this.props.sendMessage(user, text)
     }
 
@@ -80,6 +81,9 @@ const ChatFooterCompo = styled.div`
 const Input = styled.input`
     grid-column: 1/2;
     grid-row: 1/2;
+
+    text-decoration: none;
+    outline: 0;
 `
 
 const Button = styled.button`
