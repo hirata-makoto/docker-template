@@ -4,4 +4,4 @@ ENV APP_ROOT /usr/src/express
 WORKDIR $APP_ROOT
 
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm", "run", "start-docker"]

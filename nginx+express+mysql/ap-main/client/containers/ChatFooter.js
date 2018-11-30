@@ -32,7 +32,6 @@ class ChatFooter extends Component {
             inputText: ''
         })
 
-        this.props.serviceGetData()
         this.props.sendMessage(user, text)
     }
 

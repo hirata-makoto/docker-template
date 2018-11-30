@@ -8,7 +8,21 @@ const user = (state = {}, action) => {
 
 // 
 const chats = (state = [], action) => {
-    if(action.type === 'SEND_MESSAGE'){
+    if(action.type === 'CHAT_CONNECTION'){
+        console.log('接続を開始します。')
+        return state
+    }
+    if(action.type === 'CHAT_CONNECTION_RESULT'){
+        console.log('接続されました。')
+        return state
+    }
+
+    if(action.type === 'CHAT_SEND_MESSAGE'){
+        console.log('送信中イベントを受け付けました。')
+        return state
+    }
+    if(action.type === 'CHAT_SEND_MESSAGE_RESULT'){
+        console.log('結果イベントを受付ました。')
         const a = Object.assign([], state)
         a.push({
             user: '192.198.128.12',

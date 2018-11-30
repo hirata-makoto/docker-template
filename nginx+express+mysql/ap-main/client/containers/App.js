@@ -2,13 +2,22 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 
 import ChatHeader from './ChatHeader'
 import ChatBody from './ChatBody'
 import ChatFooter from './ChatFooter'
 
+import {connection} from '../actions'
+
 class App extends Component {
-    static propTypes = {}
+    static propTypes = {
+        connection: PropTypes.func.isRequired
+    }
+
+    componentDidMount(){
+        this.props.connection()
+    }
 
     render() {
         return (
@@ -23,7 +32,18 @@ class App extends Component {
     }
 }
 
-export default withRouter(App)
+const mapStateToProps = (state, ownProps) => ({})
+
+const mapDispatchToProps = (dispatch) => (
+    {
+        connection: connection
+    }
+)
+
+export default withRouter(connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App))
 
 
 /**
